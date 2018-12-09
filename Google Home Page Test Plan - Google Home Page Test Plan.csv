@@ -1,0 +1,118 @@
+Google Home Page Test Plan - Version 1,,,,,,,,,,,,
+Not Checked,Pass,Fail,Blocked,N/A,,,,,,,,
+231,0,0,0,0,,,,,,,,
+Testing Start,,,,,,,,,,,,
+Estimated Testing End,,,,,,MacOS,,,Windows,,,
+Actual Testing End,,,,,,Chrome,Firefox,Safari,Chrome,Firefox,Edge,Internet Explorer
+Item,Step,,,,Test Data,,,,,,,
+View Page,,,,,,,,,,,,
+,Given User is viewing the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,Then the following is true,,,,,,,,,,,
+Page Title,Text: Google,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Favicon,Current favicon as specified in release documentation,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Header,"Links formatting is:
+  Font Family: ""Arial, Sans-Serif""
+  Font Size: 13px
+  Color: Black",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Header Left,"Links: ""About"", ""Store""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Header Right,"Links: ""Gmail"", ""Images""; Grid Menu; Alerts Menu",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+  Case: Not Logged In,"Rightmost Button: ""Sign In""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+  Case: Logged In,"Rightmost Button: Circle with initial of first name of User in the center,
+opens user menu",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Main Body,"Image: Google logo, styled as specified in the daily art documentation",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+,"Text Box: Search box with search by voice microphone button on the
+right side",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+,"Button Left: ""Google Search""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+,"Button Right: ""I'm Feeling Lucky""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Footer Styling,"Background Color: #F2F2F2
+Links:
+  Font Family: ""Arial, Sans-Serif""
+  Font Size: 13px
+  Color: #5F6368",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Footer Left,"Links: ""Advertising"", ""Business""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Footer Right,"Links: ""Privacy"", ""Terms"", ""Settings""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Focus Search Box,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,When User clicks inside the search box,,,,,,,,,,,
+,Then the recent searches menu appears,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Perform Search,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+,And User clicks inside the search box,,,,,,,,,,,
+Golden Path,When User enters text,,,,True Fit,,,,,,,
+,"And User performs a search (clicks ""Google Search"" button or inputs the ""Enter"" key)",,,,,,,,,,,
+,Then search is executed and User is on the search results page,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+  Case: Use Back,(Continued from above) When User clicks the browser's back button,,,,,,,,,,,
+,Then User is returned to the Google home page with an empty search box,,,,,,,,,,,
+Golden Path,When User does not enter any text,,,,,,,,,,,
+,And User performs a search,,,,,,,,,,,
+,Then search is not executed and User remains on the Google home page,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User includes a word in quotes,,,,"True Fit ""genome""",,,,,,,
+,And User performs a search,,,,,,,,,,,
+,Then search is executed and User is on the search results page and all results include the quoted word(s) in the title or meta description,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User includes a minus immediately before a word,,,,True Fit -genome,,,,,,,
+,And User performs a search,,,,,,,,,,,
+,"Then search is executed, User is on the search results page and all results exclude the negated word(s) in the title or meta description",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Negative Edge Case,When User inputs a long word (> 128 characters),,,,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,,,,,,,
+,And User performs a search,,,,,,,,,,,
+,"Then search is executed, User is on the no search results page, with the message: [word inputted]... is too long a word. Try using a shorter word",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Negative Edge Case,When User inputs text that returns no results,,,,"*
+[only space(s)]",,,,,,,
+,And User performs a search,,,,,,,,,,,
+,"Then search is executed, User is on the no search results page, with the message: Your search - [search terms] - did not match any documents. Suggestions: Try different keywords.",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User enters only stop/lexical words,,,,"and, or, the, is, at, want, that, which, there, a, an, not",,,,,,,
+,And User performs a search,,,,,,,,,,,
+,"Then search is executed, User is on the search results page, and the stop words are considered if they appear to be the main subject of results. For example, searching for: and or not returns results about logical operators and logic gates",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User enters leading spaces,,,,     test,,,,,,,
+,And User performs a search,,,,,,,,,,,
+,Then leading spaces are stripped before search executes,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User enters trailing spaces,,,,test     ,,,,,,,
+,And User performs a search,,,,,,,,,,,
+,Then trailing spaces are stripped before search executes,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User attempts JavaScript injection,,,,"<script>document.write('hi')</script>
+</html><script>document.write('test')</script>
+""</html><script>document.write('test')</script>",,,,,,,
+,And User performs a search,,,,,,,,,,,
+,"Then search is executed, User is on the search results page with results for the search input, and JavaScript injection fails",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Type in Search Box,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+,And User clicks inside the search box,,,,,,,,,,,
+Golden Path,When User enters text,,,,test,,,,,,,
+,"Then the search suggestions menu appears with 10 search suggestions and buttons: ""Google Search"", ""I'm Feeling Lucky""",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Edge Case,When User enters many wide characters,,,,WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW,,,,,,,
+,Then there is no text overflow outside of the search box,,,,,,,,,,,
+Edge Case,When User enters emojis,,,,,,,,,,,
+,"Then the emojis are displayed as emojis, not unknown Unicode",,,,😃,,,,,,,
+"Use ""I'm Feeling Lucky""",,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+,And User enters text,,,,True Fit,,,,,,,
+Golden Path,"When User clicks ""I'm Feeling Lucky"" button",,,,,,,,,,,
+,Then User is on the page that Google returned as the first search result,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Select Search Suggestion,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,When User clicks inside the search box,,,,,,,,,,,
+,"And User enters the text ""a""",,,,,,,,,,,
+,And User clicks a search suggestion,,,,,,,,,,,
+,Then the search box is populated with the text of the suggestion and User is on the search results page,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+"Type in, then Exit Search Box",,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Edge Case,When User clicks inside the search box,,,,,,,,,,,
+,And User enters text,,,,True Fit,,,,,,,
+,And User clicks outside of the search box,,,,,,,,,,,
+,When User clicks inside the search box,,,,,,,,,,,
+,Then the search suggestions menu does not reappear,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Click About Link,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,"When User clicks ""About"" link in the header",,,,,,,,,,,
+,Then User is on the About Google page,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Click Store Link,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,"When User clicks ""Store"" link in the header",,,,,,,,,,,
+,Then User is on the Google Store page,,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Click Gmail Link,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,"When User clicks ""Gmail"" link in the header",,,,,,,,,,,
+,"Then User is on the Gmail login page, if not logged in, or on the Gmail home page, if logged in",,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
+Click Images Link,,,,,,,,,,,,
+,Given User is at the Google home page (https://www.google.com),,,,,,,,,,,
+Golden Path,"When User clicks ""Images"" link in the header",,,,,,,,,,,
+,Then User is on Google Images home page (http://www.google.com/imghp),,,,,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked,Not Checked
