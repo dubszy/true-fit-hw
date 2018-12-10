@@ -25,7 +25,7 @@ function fetch_chromedriver() {
     if [[ -e "/usr/local/bin/$chromedriver" ]]; then
         printf "$chromedriver already installed in /usr/local/bin, please delete it manually to install the new one\n"
     else
-        cp "$geckodriver" /usr/local/bin
+        cp "$chromedriver" /usr/local/bin
     fi
 }
 
