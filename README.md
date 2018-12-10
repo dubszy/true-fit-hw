@@ -6,13 +6,6 @@ written in [Python](https://www.python.org/) using the
 implemented with the [Python WebDriver wrapper framework](https://github.com/dubszy/PyWebDriverFramework)
 I have also written.
 
-## Prerequisites
-This project requires the following:
-- MacOS or Linux machine with curl, unzip, tar, Python 3.6, pip, pytest3
-installed.
-- Chrome v69 or v70, Firefox v
-- Each Selenium WebDriver binary for the above browser versions
-
 ## Project Structure
 ##### Google Home Page Test Plan.xlsx
 Test Plan for the Google home page as an Excel spreadsheet
@@ -27,16 +20,63 @@ Directory that the WebDriver binaries are placed in by the setup script
 ##### tests/
 The Selenium tests
 
+## Prerequisites
+This project requires the following:
+- MacOS machine with curl, unzip, tar, Python 3.6, pip3, and pytest 3 installed.
+- Chrome version 69+ and Firefox version 57+
+
 ## Download
 To download and start using this project you can do any of the following:
 - Download a [release](https://github.com/dubszy/true-fit-hw/releases)
 - Download a specific branch as a ZIP by selecting the branch to download from
 the "Branch" dropdown menu, then using the "Clone or download" dropdown menu and
 clicking "Download ZIP"
-- Clone it by running `git clone git@github.com:dubszy/true-fit-hw.git`
+- Clone it in a CLI: `git clone git@github.com:dubszy/true-fit-hw.git`
 
 ## Setup
-WIP
+Once the project is downloaded, run the following command to set it up: `./setup.sh`, which will check for:
+- curl
+- unzip
+- tar
+- python3
+- pip3
+- pytest
+
+The output of the setup script should look similar to the following:
+```
+[ check ] Checking prerequisites:
+[ check ] curl...ok
+[ check ] tar...ok
+[ check ] unzip...ok
+[ check ] python3...ok
+[ check ] pip3...ok
+[ check ] pytest...ok
+Collecting selenium==3.6.0 (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/48/90/29bcfa7ced2836016a400e8216e5a4166a71923b05d452ee7ee9e8775156/selenium-3.6.0-py2.py3-none-any.whl (924kB)
+    100% |████████████████████████████████| 931kB 8.6MB/s
+Installing collected packages: selenium
+~/development/true-fit-hw/drivers ~/development/true-fit-hw
+Fetching chromedriver
+Archive:  chromedriver.zip
+  inflating: chromedriver
+Fetching geckodriver
+x geckodriver
+<download_directory>/true-fit-hw
+Done!
+```
+
+If there was an error locating any of these, the script will report as such. `curl`, `unzip`, and `tar` should already
+be installed on your system, so if an error is reported for any of those, it may be indicative of an underlying issue.
+If python3 is not found, [this guide](https://docs.python-guide.org/starting/install3/osx/) will help you install it
+successfully. Since pip3 is bundled with python3, once python3 is installed, pip3 should be installed as well. If pytest
+is not found, run
+```bash
+pip3 install pytest
+``` 
 
 ## Running
-WIP
+After downloading and setting up the project, the Selenium tests can be run. The tests should be run with the following
+command from `/path/to/download/true-fit-hw`:
+```bash
+pytest tests
+```
