@@ -1,2 +1,1 @@
-PyHamcrest==1.9.0
 selenium==3.6.0
