@@ -24,3 +24,4 @@ class SearchNoInputTest(unittest.TestCase):
 
         self.assertTrue(home_page.is_search_input_present(), "Search input was not present on the home page")
 
+        session.close()

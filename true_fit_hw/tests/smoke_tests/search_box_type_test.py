@@ -14,3 +14,5 @@ class SearchBoxTypeTest(unittest.TestCase):
         home_page.type_in_search("True Fit")
 
         self.assertEqual(home_page.get_search_input_text(), "True Fit")
+
+        session.close()

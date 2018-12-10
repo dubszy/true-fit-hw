@@ -21,6 +21,12 @@ function fetch_chromedriver() {
     curl -fsSL -o "$chromedriver_zip" https://chromedriver.storage.googleapis.com/2.44/chromedriver_mac64.zip \
     && unzip -n "$chromedriver_zip" \
     && rm "$chromedriver_zip"
+
+    if [[ -e "/usr/local/bin/$chromedriver" ]]; then
+        printf "$chromedriver already installed in /usr/local/bin, please delete it manually to install the new one\n"
+    else
+        cp "$geckodriver" /usr/local/bin
+    fi
 }
 
 # Fetch geckodriver archive and extract it
@@ -29,6 +35,12 @@ function fetch_geckodriver() {
     curl -fsSL -o "$geckodriver_tar" https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-macos.tar.gz \
     && tar xzvkf "$geckodriver_tar" \
     && rm "$geckodriver_tar"
+
+    if [[ -e "/usr/local/bin/$geckodriver" ]]; then
+        printf "$geckodriver already installed in /usr/local/bin, please delete it manually to install the new one\n"
+    else
+        cp "$geckodriver" /usr/local/bin
+    fi
 }
 
 # Checks for curl, tar and unzip

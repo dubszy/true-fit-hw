@@ -13,3 +13,5 @@ class SearchBoxPresentTest(unittest.TestCase):
         home_page = HomePage(session)
 
         self.assertTrue(home_page.is_search_input_present(), "Search box was not present on home page")
+
+        session.close()

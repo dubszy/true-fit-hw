@@ -53,7 +53,10 @@ successfully.
 After checking prerequisites, the setup script will fetch the PyWebDriverFramework submodule and install it and the
 framework that the tests rely on (tfhw_main) into the local Python site-packages.
 
-The setup script will then fetch the chromedriver and geckodriver binaries and place them in `drivers/`.
+The setup script will then fetch the chromedriver and geckodriver binaries and place them in `drivers/`. This framework
+requires that driver binaries be located in the PATH, so if there is not currently a chromedriver/geckodriver in
+/usr/local/bin, the setup script will place them there. If there is, the script will report that you should delete them
+manually if you would like to replace them.
 
 The output of the setup script should look similar to the following:
 ```
