@@ -38,7 +38,12 @@ clicking "Download ZIP"
 - Clone it in a CLI: `git clone git@github.com:dubszy/true-fit-hw.git`
 
 ## Setup
-Once the project is downloaded, run the following command to set it up: `./setup.sh`, which will check for:
+Once the project is downloaded, run the following to set it up:
+```bash
+cd true-fit-hw
+./setup.sh
+```
+This script checks for:
 - curl
 - unzip
 - tar
@@ -54,12 +59,11 @@ After checking prerequisites, the setup script will fetch the PyWebDriverFramewo
 framework that the tests rely on (tfhw_main) into the local Python site-packages.
 
 The setup script will then fetch the chromedriver and geckodriver binaries and place them in `drivers/`. This framework
-requires that driver binaries be located in the PATH, so if there is not currently a chromedriver/geckodriver in
-/usr/local/bin, the setup script will place them there. If there is, the script will report that you should delete them
+requires that driver binaries be located in the `PATH`, so if there is not currently a chromedriver/geckodriver in
+`/usr/local/bin`, the setup script will place them there. If there is, the script will report that you should delete them
 manually if you would like to replace them.
 
-The output of the setup script should look similar to the following:
-<details><summary>Example Output:</summary>
+<details><summary>The output of the setup script should look similar to the following (expand)</summary>
 <p>
 
 ```
@@ -77,7 +81,7 @@ Successfully installed selenium-3.6.0
 Submodule 'PyWebDriverFramework' (git@github.com:dubszy/PyWebDriverFramework.git) registered for path 'PyWebDriverFramework'
 Cloning into '<download_path>/true-fit-hw/PyWebDriverFramework'...
 Submodule path 'PyWebDriverFramework': checked out '75e3ee774f50fefc799028a197b0084975d4db99'
-<download_path>/true-fit-hw/PyWebDriverFramework ~/development/test/true-fit-hw
+<download_path>/true-fit-hw/PyWebDriverFramework <download_path>/true-fit-hw
 running install
 running build
 running build_py
@@ -121,7 +125,7 @@ byte-compiling /usr/local/lib/python3.7/site-packages/wdframework/driver_env.py 
 running install_egg_info
 Writing /usr/local/lib/python3.7/site-packages/PyWebDriverFramework-0.0.1-py3.7.egg-info
 <download_path>/true-fit-hw
-<download_path>/true-fit-hw/true_fit_hw ~/development/test/true-fit-hw
+<download_path>/true-fit-hw/true_fit_hw <download_path>/true-fit-hw
 running install
 running build
 running build_py
@@ -150,7 +154,7 @@ byte-compiling /usr/local/lib/python3.7/site-packages/tfhw_main/common/loadables
 running install_egg_info
 Writing /usr/local/lib/python3.7/site-packages/tfhw_main-0.0.1-py3.7.egg-info
 <download_path>/true-fit-hw
-<download_path>/true-fit-hw/drivers ~/development/test/true-fit-hw
+<download_path>/true-fit-hw/drivers <download_path>/true-fit-hw
 Fetching chromedriver
 Archive:  chromedriver.zip
   inflating: chromedriver
