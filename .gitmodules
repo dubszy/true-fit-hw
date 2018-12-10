@@ -1,0 +1,3 @@
+[submodule "PyWebDriverFramework"]
+	path = PyWebDriverFramework
+	url = git@github.com:dubszy/PyWebDriverFramework.git
