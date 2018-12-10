@@ -18,3 +18,5 @@ class SearchPerformTest(unittest.TestCase):
 
         self.assertTrue(
             search_results_page.is_at_least_one_result_present(), "No results present on the search results page")
+
+        session.close()

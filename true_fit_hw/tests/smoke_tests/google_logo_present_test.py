@@ -14,3 +14,5 @@ class GoogleLogoPresentTest(unittest.TestCase):
 
         self.assertTrue(home_page.is_logo_present(), "Google logo was not present on home page")
 
+        session.close()
+
