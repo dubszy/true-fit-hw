@@ -47,7 +47,7 @@ class HomePage(Page):
 
         :return: The text currently in the search input field
         """
-        self.__search_input.wait_until(ExpectedCondition.visibility_of)
+        self.__search_input.wait_until(ExpectedCondition.visibility_of_element_located)
         return self.__search_input.get_text()
 
     def type_in_search(self, text):
@@ -58,8 +58,9 @@ class HomePage(Page):
 
         :return: This instance
         """
-        self.__search_input.wait_until(ExpectedCondition.visibility_of)
+        self.__search_input.wait_until(ExpectedCondition.visibility_of_element_located)
         self.__search_input.send_keys(text)
+        self.__search_input.wait_until(ExpectedCondition.text_to_be_present_in_element_value, text)
         return self
 
     def perform_search(self, text):
