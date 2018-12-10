@@ -10,15 +10,19 @@ I have also written.
 ##### Google Home Page Test Plan.xlsx
 Test Plan for the Google home page as an Excel spreadsheet
 ##### Google Home Page Test Plan.csv
-A CSV version of the the test plan
+A CSV version of the test plan
 ##### requirements.txt
 Python package dependencies that this project uses
 ##### setup.sh
 Script to setup the environment for this project
 ##### drivers/
 Directory that the WebDriver binaries are placed in by the setup script
-##### tests/
+##### PyWebDriverFramework/
+The PyWebDriverFramework Git submodule that this project uses
+##### true_fit_hw/tests/
 The Selenium tests
+##### true_fit_hw/tfhw_main/
+Framework for storing all non-test code that the tests use while running
 
 ## Prerequisites
 This project requires the following:
@@ -40,7 +44,16 @@ Once the project is downloaded, run the following command to set it up: `./setup
 - tar
 - python3
 - pip3
-- pytest
+
+If there was an error locating any of these, the script will report as such. `curl`, `unzip`, and `tar` should already
+be installed on your system, so if an error is reported for any of those, it may be indicative of an underlying issue.
+If python3 is not found, [this guide](https://docs.python-guide.org/starting/install3/osx/) will help you install it
+successfully.
+
+After checking prerequisites, the setup script will fetch the PyWebDriverFramework submodule and install it and the
+framework that the tests rely on (tfhw_main) into the local Python site-packages.
+
+The setup script will then fetch the chromedriver and geckodriver binaries and place them in `drivers/`.
 
 The output of the setup script should look similar to the following:
 ```
@@ -65,18 +78,15 @@ x geckodriver
 Done!
 ```
 
-If there was an error locating any of these, the script will report as such. `curl`, `unzip`, and `tar` should already
-be installed on your system, so if an error is reported for any of those, it may be indicative of an underlying issue.
-If python3 is not found, [this guide](https://docs.python-guide.org/starting/install3/osx/) will help you install it
-successfully. Since pip3 is bundled with python3, once python3 is installed, pip3 should be installed as well. If pytest
-is not found, run
-```bash
-pip3 install pytest
-``` 
-
 ## Running
 After downloading and setting up the project, the Selenium tests can be run. The tests should be run with the following
-command from `/path/to/download/true-fit-hw`:
+command from `/path/to/download/true-fit-hw/true-fit-hw`:
 ```bash
-pytest tests
+python3 tests/smoke_tests/smoke_tests.py
 ```
+The tests are run using Python's unittest, via the module `smoke_tests.py`.
+
+## Test Structure
+The tests are set up with one test in each test case, and one file per test case. This is to prevent tests from leaking
+their state into other tests, as well as to keep the tests succinct and easily extendable, maintainable, movable, and
+replaceable.
