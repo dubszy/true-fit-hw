@@ -43,6 +43,9 @@ printf "[ check ] pytest..."; [[ -z `which pytest` ]] && error || ok
 # Install requirements
 pip3 install --user -r requirements.txt
 
+# Grab PyWebDriverFramework
+git submodule update --init
+
 
 ### Install the WebDriver binaries ###
 

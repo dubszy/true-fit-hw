@@ -5,3 +5,4 @@
 drivers/*driver
 
 __pycache__
+.pyc
