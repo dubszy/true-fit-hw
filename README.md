@@ -31,7 +31,6 @@ This project requires the following:
 
 ## Download
 To download and start using this project you can do any of the following:
-- Download a [release](https://github.com/dubszy/true-fit-hw/releases)
 - Download a specific branch as a ZIP by selecting the branch to download from
 the "Branch" dropdown menu, then using the "Clone or download" dropdown menu and
 clicking "Download ZIP"
